@@ -87,28 +87,28 @@ function createCjs(entry, out) {
 }
 
 export default [
-  ...createConfig('targets/web', 'web'),
+  // ...createConfig('targets/web', 'web'),
   ...createConfig('targets/native', 'native'),
   ...createConfig('targets/universal', 'universal'),
-  ...createConfig('targets/konva', 'konva'),
-  ...createConfig('targets/three', 'three'),
-  {
-    input: `./src/targets/cookbook/index`,
-    output: { file: `dist/cookbook.js`, format: 'esm' },
-    external,
-    plugins: [
-      babel(
-        getBabelOptions(
-          { useESModules: true },
-          '>1%, not dead, not ie 11, not op_mini all'
-        )
-      ),
-      resolve({ extensions }),
-    ],
-  },
-  ...createCjs('renderprops/targets/web', 'renderprops'),
+  // ...createConfig('targets/konva', 'konva'),
+  // ...createConfig('targets/three', 'three'),
+  // {
+  //   input: `./src/targets/cookbook/index`,
+  //   output: { file: `dist/cookbook.js`, format: 'esm' },
+  //   external,
+  //   plugins: [
+  //     babel(
+  //       getBabelOptions(
+  //         { useESModules: true },
+  //         '>1%, not dead, not ie 11, not op_mini all'
+  //       )
+  //     ),
+  //     resolve({ extensions }),
+  //   ],
+  // },
   ...createCjs('renderprops/addons', 'renderprops-addons'),
+  // ...createCjs('renderprops/targets/web', 'renderprops'),
   ...createCjs('renderprops/targets/native', 'renderprops-native'),
   ...createCjs('renderprops/targets/universal', 'renderprops-universal'),
-  ...createCjs('renderprops/targets/konva', 'renderprops-konva'),
+  // ...createCjs('renderprops/targets/konva', 'renderprops-konva'),
 ]
