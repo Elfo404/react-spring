@@ -2558,14 +2558,14 @@ function cleanUp(_ref7, filterKey) {
   var _loop = function _loop() {
     if (_isArray) {
       if (_i >= _iterator.length) return 'break'
-      _ref10 = _iterator[_i++]
+      _ref9 = _iterator[_i++]
     } else {
       _i = _iterator.next()
       if (_i.done) return 'break'
-      _ref10 = _i.value
+      _ref9 = _i.value
     }
 
-    var _ref8 = _ref10
+    var _ref8 = _ref9
     var key = _ref8.key
 
     var filter = function filter(t) {
@@ -2587,7 +2587,7 @@ function cleanUp(_ref7, filterKey) {
     ;
 
   ) {
-    var _ref10
+    var _ref9
 
     var _ret = _loop()
 
@@ -2597,12 +2597,12 @@ function cleanUp(_ref7, filterKey) {
   state.forceUpdate()
 }
 
-function diffItems(_ref11, props) {
-  var first = _ref11.first,
-    current = _ref11.current,
-    deleted = _ref11.deleted,
-    prevProps = _ref11.prevProps,
-    state = _objectWithoutPropertiesLoose(_ref11, [
+function diffItems(_ref10, props) {
+  var first = _ref10.first,
+    current = _ref10.current,
+    deleted = _ref10.deleted,
+    prevProps = _ref10.prevProps,
+    state = _objectWithoutPropertiesLoose(_ref10, [
       'first',
       'current',
       'deleted',
@@ -2634,7 +2634,7 @@ function diffItems(_ref11, props) {
     return !currentSet.has(key)
   })
   var updatedKeys =
-    update && _ref9.prevProps.items !== props.items
+    update && prevProps.items !== props.items
       ? keys.filter(function(key) {
           return currentSet.has(key)
         })
@@ -2741,10 +2741,10 @@ function diffItems(_ref11, props) {
   }) // This tries to restore order for deleted items by finding their last known siblings
   // only using the left sibling to keep order placement consistent for all deleted items
 
-  deleted.forEach(function(_ref12) {
-    var left = _ref12.left,
-      right = _ref12.right,
-      item = _objectWithoutPropertiesLoose(_ref12, ['left', 'right'])
+  deleted.forEach(function(_ref11) {
+    var left = _ref11.left,
+      right = _ref11.right,
+      item = _objectWithoutPropertiesLoose(_ref11, ['left', 'right'])
 
     var pos // Was it the element on the left, if yes, move there ...
 

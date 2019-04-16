@@ -2203,12 +2203,12 @@ function cleanUp(_ref7, filterKey) {
   state.forceUpdate()
 }
 
-function diffItems(_ref10, props) {
-  let first = _ref10.first,
-    current = _ref10.current,
-    deleted = _ref10.deleted,
-    prevProps = _ref10.prevProps,
-    state = _objectWithoutPropertiesLoose(_ref10, [
+function diffItems(_ref9, props) {
+  let first = _ref9.first,
+    current = _ref9.current,
+    deleted = _ref9.deleted,
+    prevProps = _ref9.prevProps,
+    state = _objectWithoutPropertiesLoose(_ref9, [
       'first',
       'current',
       'deleted',
@@ -2238,7 +2238,7 @@ function diffItems(_ref10, props) {
   const nextSet = new Set(keys)
   const addedKeys = keys.filter(key => !currentSet.has(key))
   const updatedKeys =
-    update && _ref9.prevProps.items !== props.items
+    update && prevProps.items !== props.items
       ? keys.filter(key => currentSet.has(key))
       : []
   const deletedKeys = state.transitions
@@ -2326,10 +2326,10 @@ function diffItems(_ref10, props) {
   let out = keys.map(key => current[key]) // This tries to restore order for deleted items by finding their last known siblings
   // only using the left sibling to keep order placement consistent for all deleted items
 
-  deleted.forEach(_ref11 => {
-    let left = _ref11.left,
-      right = _ref11.right,
-      item = _objectWithoutPropertiesLoose(_ref11, ['left', 'right'])
+  deleted.forEach(_ref10 => {
+    let left = _ref10.left,
+      right = _ref10.right,
+      item = _objectWithoutPropertiesLoose(_ref10, ['left', 'right'])
 
     let pos // Was it the element on the left, if yes, move there ...
 
