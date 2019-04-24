@@ -2062,7 +2062,7 @@ function useChain(refs, timeSteps, timeFrame) {
  * const [props, set] = useSprings(number, (i, controller) => ({ ... }))
  */
 
-const useSprings = (length, propsArg, dependencies) => {
+const useSprings = (length, propsArg) => {
   const mounted = useRef(false)
   const ctrl = useRef()
   const isFn = is.fun(propsArg) // The `propsArg` coerced into an array
@@ -2123,7 +2123,7 @@ const useSprings = (length, propsArg, dependencies) => {
     } else if (!ref) {
       controllers.forEach(c => c.start())
     }
-  }, dependencies) // Update mounted flag and destroy controller on unmount
+  }) // Update mounted flag and destroy controller on unmount
 
   useEffect(() => {
     mounted.current = true
@@ -2155,10 +2155,10 @@ const useSprings = (length, propsArg, dependencies) => {
  * const [props, set] = useSpring(() => ({ ... }))
  */
 
-const useSpring = (props, dependencies) => {
+const useSpring = props => {
   const isFn = is.fun(props)
 
-  const _useSprings = useSprings(1, isFn ? props : [props], dependencies),
+  const _useSprings = useSprings(1, isFn ? props : [props]),
     result = _useSprings[0],
     set = _useSprings[1],
     stop = _useSprings[2]

@@ -2386,7 +2386,7 @@ function computeGoalValue(value) {
  * const [props, set] = useSprings(number, (i, controller) => ({ ... }))
  */
 
-var useSprings = function useSprings(length, propsArg, dependencies) {
+var useSprings = function useSprings(length, propsArg) {
   var mounted = React.useRef(false)
   var ctrl = React.useRef()
   var isFn = is.fun(propsArg) // The `propsArg` coerced into an array
@@ -2472,7 +2472,7 @@ var useSprings = function useSprings(length, propsArg, dependencies) {
         return c.start()
       })
     }
-  }, dependencies) // Update mounted flag and destroy controller on unmount
+  }) // Update mounted flag and destroy controller on unmount
 
   React.useEffect(function() {
     mounted.current = true
@@ -2512,10 +2512,10 @@ var useSprings = function useSprings(length, propsArg, dependencies) {
  * const [props, set] = useSpring(() => ({ ... }))
  */
 
-var useSpring = function useSpring(props, dependencies) {
+var useSpring = function useSpring(props) {
   var isFn = is.fun(props)
 
-  var _useSprings = useSprings(1, isFn ? props : [props], dependencies),
+  var _useSprings = useSprings(1, isFn ? props : [props]),
     result = _useSprings[0],
     set = _useSprings[1],
     stop = _useSprings[2]
